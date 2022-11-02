@@ -32,7 +32,7 @@ function displayDate() {
   setInterval(() => {
     const date = DateTime.now().toLocaleString(DateTime.DATETIME_FULL_WITH_SECONDS);
     timeAndDate.innerHTML = date;
-  }, 1500);
+  }, 500);
 }
 
 displayDate();

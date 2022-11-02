@@ -178,6 +178,10 @@ footer h2 {
   margin-left: 3%;
 }
 
+#time {
+  text-align: end;
+}
+
 .time {
   margin-right: 2%;
   text-align: end;
