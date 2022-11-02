@@ -1,4 +1,3 @@
-/* eslint linebreak-style: ["error", "windows"] */
 export default class Storage {
   static getBooks() {
     let books;

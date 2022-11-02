@@ -1,6 +1,4 @@
-// these aren't really private, but nor are they really useful to document
 /* eslint-disable */
-/* eslint linebreak-style: ["error", "windows"] */
 /**
  * @private
  */

@@ -1,4 +1,3 @@
-/* eslint linebreak-style: ["error", "windows"] */
 export default class displayDynamic {
   static displayBooks() {
     const books = Storage.getBooks();
