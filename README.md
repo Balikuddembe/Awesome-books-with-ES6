@@ -21,7 +21,7 @@ To get a local copy up and running follow these simple example steps.
 - Code editor (Vs code)
 
 ### Setup
-- clone 'https://github.com/Balikuddembe/Awesome-Books.git'
+- clone 'https://github.com/Balikuddembe/Awesome-books-with-ES6.git'
   
 - Setup Linters by running following commands in your terminal:
 

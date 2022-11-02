@@ -1,77 +1,8 @@
 /* eslint-disable max-classes-per-file */
-
-class Book {
-  constructor(title, author) {
-    this.title = title;
-    this.author = author;
-  }
-}
-
-class Storage {
-  static getBooks() {
-    let books;
-    if (localStorage.getItem('books') === null) {
-      books = [];
-    } else {
-      books = JSON.parse(localStorage.getItem('books'));
-    }
-
-    return books;
-  }
-
-  static addBook(book) {
-    const books = Storage.getBooks();
-    books.push(book);
-    localStorage.setItem('books', JSON.stringify(books));
-  }
-
-  static removeBook(book) {
-    const bookTitle = book.querySelector('#title').innerText;
-    const books = Storage.getBooks();
-    const filterBooks = books.filter((book) => bookTitle === book.title);
-    const filterIndex = books.indexOf(filterBooks[0]);
-    books.splice(filterIndex, 1);
-    localStorage.setItem('books', JSON.stringify(books));
-  }
-}
-
-class displayDynamic {
-  static displayBooks() {
-    const books = Storage.getBooks();
-    books.forEach((book) => displayDynamic.addBooksCollection(book));
-  }
-
-  static addBooksCollection(book) {
-    const books = document.querySelector('.list');
-    const newBook = document.createElement('div');
-    newBook.innerHTML = `
-        <div class = 'book-cont'>
-        <div class = "book-details">
-        <p id='title'> "${book.title}"</p> 
-        <p class="by">by</p>
-        <p id='author'> ${book.author}</p>
-        </div>
-        <button class="remove" type="button">Remove</button>
-        </div>
-        <hr class='hr>
-        </div>
-        `;
-    newBook.classList.add('newBook');
-    books.appendChild(newBook);
-    newBook.classList.add('book-row');
-  }
-
-  static deleteBook(eve) {
-    if (eve.classList.contains('remove')) {
-      eve.parentElement.parentElement.remove();
-    }
-  }
-
-  static clearFields() {
-    document.querySelector('.title').value = '';
-    document.querySelector('.author').value = '';
-  }
-}
+import Book from './modules/books.js';
+import displayDynamic from './modules/displayDynamic.js';
+import Storage from './modules/storage.js';
+import { DateTime } from './modules/luxon.js';
 
 document.addEventListener('DOMContentLoaded', displayDynamic.displayBooks);
 document.querySelector('#form').addEventListener('submit', (e) => {
@@ -92,11 +23,19 @@ document.querySelector('#list').addEventListener('click', (e) => {
   }
 });
 
-const date = new Date();
-const d = date.toDateString();
-const local = date.toLocaleTimeString();
-document.getElementsByClassName('time')[0].innerText = `${d} , ${local}`;
+// const date = new Date();
+// const d = date.toDateString();
+// const local = date.toLocaleTimeString();
+// document.getElementsByClassName('time')[0].innerText = `${d} , ${local}`;
+const timeAndDate = document.querySelector('#time');
+function displayDate() {
+  setInterval(() => {
+    const date = DateTime.now().toLocaleString(DateTime.DATETIME_FULL_WITH_SECONDS);
+    timeAndDate.innerHTML = date;
+  }, 1500);
+}
 
+displayDate();
 const navLink = document.getElementsByClassName('border-sep');
 [...navLink].forEach((link, index) => {
   link.addEventListener('click', () => {
