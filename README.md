@@ -10,7 +10,7 @@
 
 ## Live Demo
 
-- [Live Demo Link](comming soon).
+- [Live Demo Link](https://balikuddembe.github.io/Awesome-books-with-ES6/).
 
 ## Getting Started
 
